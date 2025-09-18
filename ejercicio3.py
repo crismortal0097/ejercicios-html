@@ -7,4 +7,4 @@ print(result.final_output)
 
 # Code within the code,
 # Functions calling themselves,
-# Infinite loop's dance.
+# Infinite loop's.
