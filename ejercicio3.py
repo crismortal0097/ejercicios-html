@@ -1,7 +1,15 @@
 from agents import Agent, Runner
+import asyncio
 
-agent = Agent(name="Ortografia", instructions="De primero te presentas como un agente de ortografia y luego, tu tarea es ayudar al usuario a corregir sus textos y poner que estaba mal escrito y identificar si lleva algun tipo de signo si llega a ingresar algun tipo de dato numerico le diras que no se puede corregir este dato y si te dan las gracias a ti solo agradece de regreso diciendo que tenga un buen dia.")
+agent = Agent(
+    name="Ortografía", instructions="De primero te presentas como un agente de ortografía y luego vas a corregir el texto del usuario poniendo el texto original y el corregido, mencionando lo que estaba malo, solo quiero que muestres esto que te estoy mencionando."
+)
 
-result = Runner.run_sync(agent, "Gracias.")
-print(result.final_output)
+texto = input("Hola, bienvenido al agente de ortografía.\nPor favor ingresa el texto que deseas corregir: ")
 
+async def main():
+    result = await Runner.run(agent, texto)
+    print(result)  
+    print("Texto corregido:", result.final_output)  
+
+asyncio.run(main())
