@@ -1,89 +1,193 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>API CRIS</title>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trabajo Final</title>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: Arial, sans-serif; background-color: lightblue; }
+    nav { background-color: grey; padding: 10px; position: sticky; top: 0; z-index: 1200  ; }
+    nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
+    nav ul li { margin-right: 20px; }
+    nav ul li a { text-decoration: none; color: white; font-weight: bold; transition: color 0.3s; }
+    nav ul li a:hover, nav ul li a.active { color: #ffcc00; }
+    .content { display: none; padding: 20px 50px; }
+    .content.active { display: block; }
+    .highlight { background-color: yellow; transition: background-color 1.5s ease; }
+   
+    #agenteSection { background-color: #f0f8ff; padding: 20px; margin-top: 20px; border-radius: 8px; }
+    #agenteSection input { width: 70%; padding: 5px; }
+    #agenteSection button { padding: 5px 10px; }
+    #agenteResponse { margin-top: 10px; font-weight: bold; }
+    footer { margin-top: 20px; font-style: italic; }
+    .mi-imagen2 { margin-left: 50px; }
+  </style>
+</head>
+<body>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/12.3.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/12.3.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/12.3.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/12.3.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/12.3.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/12.3.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/12.3.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/12.3.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/12.3.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/12.3.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+  
+  <nav>
+    <ul>
+      <li><a href="#" class="active" onclick="openTab('Inicio', event)">Inicio </a></li>
+      <li><a href="#Sobre" onclick="highlightSection('Sobre')">Sobre mi </a></li>
+      <li><a href="#Experiencia" onclick="highlightSection('Experiencia')">Experiencia </a></li>
+      <li><a href="#QueMeGustaria" onclick="highlightSection('QueMeGustaria')">¿aprender mas? </a></li>
+      <li><a href="#aprendi" onclick="highlightSection('aprendi')">¿Aprendí?</a></li>
+      <li><a href="#Metas" onclick="highlightSection('Metas')">Mis metas </a></li>
+      <li><a href="#Recomendacion" onclick="highlightSection('Recomendacion')">Recomendación </a></li>
+      <li><a href="#Agente" onclick="highlightSection('Agente')">Agente</a></li>
+      <li><a href="#" onclick="openTab('contacto', event)">Contacto</a></li>
+      <li><a href="#" onclick="openTab('Tips', event)">Tips</a></li>
+    
+      <li> <img src="Recurso 6.png" alt="mediprocesos" width="auto" height="auto">
+    </li>
+    </ul>
+  </nav>
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Firebase</h2>
-      <h1>listo para el API</h1>
-      <p>HOY se celebra</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Presione para ver este logro</a>
+  <!-- INICIO -->
+  <div id="Inicio" class="content active">
+    <h1>Proyecto final de practicas</h1>
+    <h3>¿Quién soy?</h3>
+    <p>Mi nombre es Cristian Alexander Guzmán Rubio y fui un practicante de Mediprocesos en el área de desarrollo de software Edge con 18 años de edad.</p>
+    <img src="lol.jpeg" alt="yo" width="300" height="300">
+    <img src="yo.jpeg" alt="Una sonrisa" width="auto" height="300" class ="mi-imagen2">
+    <div id="Sobre">
+    <h3>Más sobre mí</h3>
+    <p>
+      Inicié prácticas el 1 de septiembre del 2025 y las voy a terminar este 6 de octubre del 2025.
+      <br>
+      Nací en Estados Unidos, pero me vine a vivir a Guatemala a los 3 años de edad.
+      <br>
+      Mi fecha de nacimiento es el 15 de marzo de 2007.
+      <br>
+      Estado: Soltero.
+      <br>
+      Me gusta mucho la programación y la tecnología en general. También tengo bastantes pasatiempos como:
+    </p>
+    <ul>
+      <li>Jugar videojuegos (más de acción, carreras o peleas).</li>
+      <li>Ver anime (mis favoritos son One Piece, Black Clover, My Hero Academia, Pokémon, Demon Slayer, entre varios más).</li>
+      <li>Escuchar música (me gustan los géneros: pop, electrónica y mi genero favorito que es la música de japonesa).</li>
+      <li>También me gusta aprender nuevos temas sobre tecnología y cómo podrían funcionar.</li>
+    </ul>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+    <div id="Experiencia">
+    <h3>Mi experiencia en Mediprocesos</h3>
+    <p>Mi experiencia en Mediprocesos ha sido muy buena, ya que he aprendido bastante en este tiempo que llevo aquí en la empresa. Me enseñaron bastante en el mes que estuve presente dentro de la empresa, estuve aprendiendo HTML, Java, CSS, Python, también me enseñaron a dar lo mejor de mí mismo y no dejarme vencer por errores en mis códigos. El ambiente laboral es muy tranquilo y no hay presión dentro de él. Los encargados y mi jefe inmediato que tuve fueron muy buena onda conmigo. En ningún momento de mis prácticas me sentí mal de estar en ese ambiente tan tranquilo, y los compañeros con los que trabajé me trataron muy bien, gracias a ello puedo decir con firmeza que hacer prácticas en Mediprocesos no es para nada una mala experiencia; al contrario, es muy bonito realizarlas porque me recibieron muy bien y me hicieron aprender de mis errores, así aprendiendo mucho mejor lo que me estaba equivocando.</p>
+    </div>
+    <div id="QueMeGustaria">
+    <h3>¿Qué me hubiera gustado aprender?</h3>
+    <p>Lo que me hubiera gustado aprender sería cómo funciona el código de las aplicaciones que han realizado en la empresa y cómo logran desarrollarlas otra cosa que me hubiera gustado aprender seria a como armar, desarmar y como arreglar laptops. </p>
+    </div>
+    
+    <div id="aprendi">
+      <h3>¿Aprendí?</h3>
+      <p>Sí, aprendí bastante a lo largo de estas semanas. Mi jefe y encargados me dieron retos que yo pensaba que eran imposibles de realizar, y luego de intentarlo me enojaba porque no lo podía lograr. Pero mi jefe y encargados me daban el empujón para poder realizar lo que creía imposible y me hicieron aprender de mis errores en lo que me asignaban en HTML, Java, CSS, Python, APIs, Git y GitHub. Me ayudaron a tener paciencia con los errores que tenía, me corregían cuando estaba equivocado y me explicaban cuando estaba muy perdido.</p>
+    </div>
+    <div id="Metas">
+    <h3>Metas a futuro</h3>
+    <p>Mis metas para el próximo año serían lograr ser alguien en Estados Unidos y adaptarme a como son allá y lograr conseguir un empleo de creador de videojuegos en entrenamiento y siguiendo cursos otras metas que tengo en algun futuro lejano serian:</p>
+    <ul>
+      <li>Casarme con una japonesa y talvez llegar a formar una familia</li>
+      <li>Ser creador de videojuegos profesional </li>
+      <li>Ayudar a las personas que se encuentran sin hogar o alimentos</li>
+      <li>Que mis hermanos sean exitosos tambien</li>
+      <li>Ser alguien en la vida que luche por sus metas</li>
+      <li>Ser una buena persona y seguir creyendo en Dios apesar de las dificultades que se presenten </li>
+    </ul>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+    <h3>¿Cómo me veo en 5 años?</h3>
+    <p>En 5 años me veo en Estados Unidos con un trabajo estable creando videojuegos.</p>
+    </div>
+     <div id="Recomendacion">
+    <h3>¿Recomendaría el proceso de prácticas en Edge Mediprocesos?</h3>
+    <p>Claro que lo recomendaría, ya que su método de aprendizaje se basa en cometer errores y aprender de ellos para no volver a cometerlos. Como dijo un sabio un día: <br><b>"Si te explico no vas a entender"</b> por Heinz Keydel. <br> Tambien es un ambiente muy bonito en el cual uno no llega a sentir el tiempo por estar entretenido realizando lo que a uno le gusta que es programando. </p> 
+     </div>
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-  </body>
+       <img src="todos.png" alt="Una sonrisa" width="900" height="auto" class="mi-imagen2">
+
+    
+    <div id ="Agente">
+    <div id="agenteSection">
+      <h3>Interactúa con el agente que yo hice</h3>
+      <p>El agente que hice lo que realiza es corrección de textos o oraciones el usuario ingresa su texto o oración y el agente los corrige <br> y los muestra en formato JSON, este lo realice en Python y lo conecte a HTML. </p>
+      <p><br> <b>EN PROCESO</b></p>
+      <input type="text" id="userText" placeholder="Escribe tu texto aquí...">
+      <button onclick="enviarTexto()">Enviar</button>
+      <p id="agenteResponse"></p>
+    </div>
+    </div>
+    <footer>
+      <p>Creado por Cristian Alexander Guzmán Rubio</p>
+    </footer>
+  </div>
+
+  <!-- CONTACTO -->
+  <div id="contacto" class="content">
+    <h2>Contacto</h2>
+    <h3>Más sobre mí</h3>
+     
+    <p>
+      Yo creé esta página web cuando fui practicante, conté mi experiencia en Mediprocesos y un poco sobre mí.
+      <br>
+      <br>
+      Estoy dispuesto a ayudarte en lo que necesites.
+      <br>
+      <br>
+      Puedes contactarme a través del correo: <b>crismortal0097@gmail.com</b>
+    </p>
+     <p>Si llegas a necesitar ayuda con tus practicas te puedo ayudar, mas no resolverte todo. </p>
+    <h3>Tecnología</h3>
+    <ul>
+      <li>Hecho en HTML</li>
+      <li>Deploy con Firebase</li>
+      <li>Estilos con CSS</li>
+      <li>Interactividad con JavaScript</li>
+    </ul>
+     <img src="Luffy.jpg" alt="Una sonrisa" width="200" height="200">
+     <img src="yo.jpeg" alt="Una sonrisa" width="auto" height="300" class ="mi-imagen2">
+    <footer>Hecho por Cristian Alexander Guzmán Rubio</footer>
+  </div>
+  <!-- TIPS -->
+  <div id="Tips" class="content">
+    <h2>Tips para tus prácticas</h2>
+    <h3>Consejos para tener éxito en tus prácticas profesionales</h3>
+    <ul>
+      <li><b>Comunicación:</b> Si no eres una persona muy comunicativa te entiendo yo fui así pero en un ambiente laboral la comunicación es muy importante a la hora de hacer un trabajo en equipo.</li>
+      <li><b>Paciencia:</b> A veces las cosas no salen como uno quiere y eso puede frustrarte pero debes tener paciencia y seguir intentando a pesar que el código no compile.</li>
+      <li><b>Aprender de los errores:</b> Si cometes un error no te frustres aprende de él y no lo vuelvas a cometer y pide ayuda si es que la llegas a necesitar hasta los mas expertos pueden llegar a necesitar ayuda.</li>
+      <li><b>No te quedes de brazos cruzados:</b> Si no tienes ninguna asignación busca que hacer, no te quedes esperando a que te ponga algo que hacer, <b>TU</b> mismo busca como puedes llenarte de conocimiento dentro de la empresa </li>
+      <li><b>No todo es lo que parece:</b> Los colegios nos dan a entender que en nuestras practicas van a hacer muy estrictos o que por cualquier cosa nos las van a anular, pero la realidad es de que eso es una <b> MENTIRA</b>, las practicas son para llenarnos de conocimiento para poder aplicarlos a donde vayamos, si logramos dar el 100% de nosotros esas practicas van a estar mas que ganadas.</li>
+      <li><b>Diviértete:</b> Si te gusta lo que haces y te diviertes haciendo lo que te gusta el tiempo va a volar y no te vas a dar cuenta cuando ya terminaste tus practicas.</li>
+      <li><b>Se tú mismo:</b> No trates de ser alguien que no eres, se tu mismo y da lo mejor de ti.</li>
+      <li><b>Explora:</b>Busca nuevas formas de ser de tu trabajo mas productivo, si no te funciona un metodo prueba otro y si sigue sin funcionar busca y busca hasta encontrar uno que te funcione, por ejemplo a mi me gusta trabajar con musica me concentro mas en lo que estoy haciendo, esta cancion me ayuda a concentrarme. </li>
+    </ul>
+<iframe width="485" height="240" src="https://www.youtube.com/embed/HqdUZ0kYWIA" title="[AKITA NERU] Gocha Gocha Urusee! (Sub Spanish and mp3) [VOCALOID]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+   
+         <img src="yo.jpeg" alt="Una sonrisa" width="auto" height="300" class ="mi-imagen2">
+      
+    <footer>Hecho por Cristian Alexander Guzmán Rubio</footer>
+
+
+
+  </div>
+  <script>
+    // Funciones de navegación
+    function openTab(tabId, event) {
+      document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('nav ul li a').forEach(a => a.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+
+    function highlightSection(id) {
+      const section = document.getElementById(id);
+      section.classList.add("highlight");
+      setTimeout(() => section.classList.remove("highlight"), 1500);
+    }
+
+  
+  </script>
+</body>
 </html>
